@@ -56,7 +56,7 @@ public class SchedulingAlgorithmView extends JFrame {
         // add(panel1);
         // add(panel2);
         // add(panel3);
-        setSize(1000,1000);
+        setSize(1000,600);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -101,10 +101,12 @@ public class SchedulingAlgorithmView extends JFrame {
 
         public void actionPerformed(ActionEvent e) {
 
+            panel2.removeAll();
+
             numOfProcessSelected = (Integer) processNum.getSelectedItem();
 
             System.out.println("Selected in the home class: " + numOfProcessSelected);
-            enterButton.setEnabled(false);
+            // enterButton.setEnabled(false);
 
             panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); 
             panel2.setMaximumSize(new Dimension(1000, 400));
@@ -137,12 +139,15 @@ public class SchedulingAlgorithmView extends JFrame {
                 panel2.add(contain);
             }
 
-            schedulerChoice.addElement("Round Robin (Quantum = 3)");
-            schedulerChoice.addElement("Non Preemptive SJF");
-            schedulerChoice.addElement("Preemptive Priority");
-            schedulerChoice.addElement("Non Preemptive Priority");
-            scheduler.setSelectedItem(0);
-            panel1.add(scheduler);
+            if(schedulerChoice.getSize() == 0) {
+                schedulerChoice.addElement("Round Robin (Quantum = 3)");
+                schedulerChoice.addElement("Non Preemptive SJF");
+                schedulerChoice.addElement("Preemptive Priority");
+                schedulerChoice.addElement("Non Preemptive Priority");
+                scheduler.setSelectedItem(0);
+                panel1.add(scheduler);
+            }
+            
             
             panel1.add(confirmButton);
             panel1.add(labelEmptyField);

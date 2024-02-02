@@ -108,9 +108,9 @@ public class SchedulingAlgorithmController {
 
                 // table making
                 DefaultTableModel model = new DefaultTableModel(dataProcess, columnNames);
-                theView.remove(theView.panel2);
-                theView.add(theView.panel3, BorderLayout.CENTER);
-                theView.add(theView.panel1, BorderLayout.NORTH);
+                // theView.remove(theView.panel2);
+                // theView.add(theView.panel3, BorderLayout.CENTER);
+                // theView.add(theView.panel1, BorderLayout.NORTH);
                 theView.tableResult.setModel(model);
                 theView.tableResult.setEnabled(false);
                 theView.tableResult.setBounds(30, 40, 500, 190);
@@ -150,10 +150,21 @@ public class SchedulingAlgorithmController {
                 calculationPanel.add(aveWaiting);
                 calculationPanel.setBounds(30, 40, 500, 200);
 
+                
                 // JScrollPane scrollPane3 = new JScrollPane(calculationPanel);
                 theView.scrollPane3.setViewportView(calculationPanel);
                 theView.scrollPane3.setPreferredSize(new Dimension(800, 200));
                 theView.panel3.add(theView.scrollPane3);
+                JDialog newWindow = new JDialog();
+                newWindow.setLayout(new GridLayout(3,1));
+                newWindow.add(theView.scrollPane);
+                newWindow.add(theView.scrollPane2);
+                newWindow.add(theView.scrollPane3);
+                newWindow.setVisible(true);
+                newWindow.setSize(1000,600);
+                newWindow.revalidate();
+                newWindow.repaint();
+
                 theView.scrollPane.revalidate();
                 theView.scrollPane.repaint();
                 theView.scrollPane2.revalidate();
